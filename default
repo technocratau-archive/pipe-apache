@@ -1,0 +1,12 @@
+<VirtualHost *:80>
+  DocumentRoot /var/www/html
+  LogLevel info
+
+  AddType application/x-httpd-php .php
+  DirectoryIndex index.html index.php
+  ProxyPassMatch ^/(.*\.php)$ fcgi://php:9000/var/www/html/$1
+</VirtualHost>
+
+<Directory /var/www/html>
+    AllowOverride All                                                              
+</Directory>
